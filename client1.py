@@ -8,10 +8,12 @@ def main():
     s.connect(SERVER_ADDRESS)
 
     while True:
-        comando= input("Inserisci un comando: forward-backward-left-right o exit per uscire: ")
+        # Ricevi il comando completo (direzione e distanza o exit)
+        print("- Digita: forward-backward-left-right seguito da un numero (es: right 10)")
+        print("- Digita: exit per uscire")
+        comando = input()
         if comando == "exit":
             break
-        
         # Invia il comando al server
         messaggio = comando.encode()
         s.sendall(messaggio)
