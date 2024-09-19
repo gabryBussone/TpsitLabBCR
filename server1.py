@@ -15,7 +15,7 @@ def main():
         data = connection.recv(BUFFER_SIZE)
         if not data:
             break
-        comando = data.decode().strip()
+        comando = data.decode()
         verifica_comando(comando)
     connection.close()
 
