@@ -15,23 +15,23 @@ def main():
         data = connection.recv(BUFFER_SIZE)
         if not data:
             break
-        comando = data.decode()
+        comando = data.decode().strip()
         verifica_comando(comando)
     connection.close()
 
 def verifica_comando(comando):
+    status = "OK"
+    comando, valore = comando.split()
+    valore = int(valore)
+    
     if comando == "forward":
-        status = "OK"
-        print(f"{status}|Il robot si sta muovendo di {valore}")
+        print(f"{status} | Il robot si sta muovendo di {valore} in avanti")
     elif comando == "backward":
-        status = "OK"
-        print(f"{status}|Il robot si sta muovendo di {valore}")
+        print(f"{status} | Il robot si sta muovendo di {valore} indietro")
     elif comando == "left":
-        status = "OK"
-        print(f"{status}|Il robot si sta muovendo di {valore}")
+        print(f"{status} | Il robot si sta muovendo di {valore} a sinistra")
     elif comando == "right":
-        status = "OK"
-        print(f"{status}|Il robot si sta muovendo di {valore}")
+        print(f"{status} | Il robot si sta muovendo di {valore} a destra")
     else:
         status = "ERROR"
         print(f"{status}|Comando non riconosciuto")
